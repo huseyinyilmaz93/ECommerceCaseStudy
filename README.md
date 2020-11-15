@@ -1,6 +1,13 @@
-# ECommerceCaseStudy
+## ECommerceCaseStudy
 
-/scenario/scenario1
-/scenario/scenario2
-/scenario/scenario4
-/scenario/scenario5
+# Scenario1.txt
+  /scenario/scenario1
+
+# Scenario2.txt
+  /scenario/scenario2
+
+# Scenario4.txt
+  /scenario/scenario4
+
+# Scenario5.txt
+  /scenario/scenario5
