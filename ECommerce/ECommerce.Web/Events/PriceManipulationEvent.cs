@@ -1,5 +1,6 @@
 ﻿using System;
 using ECommerce.Web.CommandPattern.CommandPatternInterfaces;
+using ECommerce.Web.Constants;
 using ECommerce.Web.Events.EventInterfaces;
 using ECommerce.Web.Models;
 using ECommerce.Web.Repositories.RepositoryInterfaces;
@@ -36,14 +37,14 @@ namespace ECommerce.Web.Events
 
         public void Manipulate(Campaign campaign)
         {
-            var manupulationBoundary = campaign.Product.Price * ((decimal)campaign.Limit / 100);
+            var manupulationBoundary = campaign.Product.Price * ((decimal)campaign.Limit / ECommerceConstants._100);
 
             var campaignProductSellingPercent = campaign.TotalSales / (decimal)campaign.TargetSalesCount;
             var campaignProgressPercent = (_timer.GetCurrentDateTime() - campaign.ActivationDateTime).Hours / (decimal)campaign.Duration;
 
-            campaign.Product.PriceManupulation = -(manupulationBoundary * 0.5m) +
+            campaign.Product.PriceManupulation = -(manupulationBoundary * ECommerceConstants.DiscountLimitInitialUsageRate) +
                                                  (campaignProductSellingPercent - campaignProgressPercent) *
-                                                 (manupulationBoundary * 0.5m);
+                                                 (manupulationBoundary * ECommerceConstants.SellingAndCampaignProgressTradeOffRate);
         }
 
     }

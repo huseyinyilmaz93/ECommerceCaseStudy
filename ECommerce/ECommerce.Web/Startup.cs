@@ -47,21 +47,6 @@ namespace ECommerce.Web
 
             services.AddSingleton<IStringifyHelper, StringifyHelper>();
             services.AddSingleton<ICommandParameterHelper, CommandParameterHelper>();
-
-            //services.AddSingleton<ICreateCampaignParametersGetter, CreateCampaignParametersGetter>();
-            //services.AddSingleton<ICreateOrderParametersGetter, CreateOrderParametersGetter>();
-            //services.AddSingleton<ICreateProductParametersGetter, CreateProductParametersGetter>();
-            //services.AddSingleton<IGetCampaignInfoParametersGetter, GetCampaignInfoParametersGetter>();
-            //services.AddSingleton<IGetProductInfoParametersGetter, GetProductInfoParametersGetter>();
-            //services.AddSingleton<IIncreaseTimeParametersGetter, IncreaseTimeParametersGetter>();
-
-
-            //services.AddSingleton<ICreateCampaignCommandStringifier, CreateCampaignCommandStringifier>();
-            //services.AddSingleton<ICreateOrderCommandStringifier, CreateOrderCommandStringifier>();
-            //services.AddSingleton<ICreateProductCommandStringifier, CreateProductCommandStringifier>();
-            //services.AddSingleton<IGetCampaignInfoCommandStringifier, GetCampaignInfoCommandStringifier>();
-            //services.AddSingleton<IGetProductInfoCommandStringifier, GetProductInfoCommandStringifier>();
-            //services.AddSingleton<IIncreaseTimeCommandStringifier, IncreaseTimeCommandStringifier>();
             
             services.AddSingleton<IProductExistanceValidator, ProductExistanceValidator>();
             services.AddSingleton<ICommandParameterValidator, CommandParameterValidator>();

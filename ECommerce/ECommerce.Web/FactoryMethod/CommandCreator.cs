@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ECommerce.Web.CommandPattern;
 using ECommerce.Web.CommandPattern.CommandPatternInterfaces;
+using ECommerce.Web.Constants;
 using ECommerce.Web.Exceptions;
 using ECommerce.Web.FactoryMethod.FactoryMethodInterfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,15 +16,13 @@ namespace ECommerce.Web.FactoryMethod
 
         private Dictionary<string, Type> _commandDictionary = new Dictionary<string, Type>()
         {
-            { "create_product", typeof(CreateProductCommand) },
-            { "get_product_info", typeof(GetProductInfoCommand) },
-            { "create_order", typeof(CreateOrderCommand) },
-            { "create_campaign", typeof(CreateCampaignCommand) },
-            { "get_campaign_info", typeof(GetCampaignInfoCommand) },
-            { "increase_time", typeof(IncreaseTimeCommand) },
+            { ECommerceConstants.CreateProductCommandString, typeof(CreateProductCommand) },
+            { ECommerceConstants.ProductInfoCommandString, typeof(GetProductInfoCommand) },
+            { ECommerceConstants.CreateOrderCommandString, typeof(CreateOrderCommand) },
+            { ECommerceConstants.CreateCampaignCommandString, typeof(CreateCampaignCommand) },
+            { ECommerceConstants.CampaignInfoCommandString, typeof(GetCampaignInfoCommand) },
+            { ECommerceConstants.IncreaseTimeCommandString, typeof(IncreaseTimeCommand) },
         };
-
-
 
         private readonly List<ICommand> _commandList;
         public CommandCreator(IServiceProvider serviceProvider)
@@ -37,7 +36,7 @@ namespace ECommerce.Web.FactoryMethod
 
             if (_commandDictionary.ContainsKey(commandKey))
             {
-                Type type = _commandDictionary[commandKey];
+                var type = _commandDictionary[commandKey];
                 var command = _serviceProvider.GetServices<ICommand>().Single(c => c.GetType() == type);
                 command.GetParameters(commandText);
                 return command;

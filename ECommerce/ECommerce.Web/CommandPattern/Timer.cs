@@ -1,5 +1,6 @@
 ﻿using System;
 using ECommerce.Web.CommandPattern.CommandPatternInterfaces;
+using ECommerce.Web.Constants;
 
 namespace ECommerce.Web.CommandPattern
 {
@@ -14,7 +15,9 @@ namespace ECommerce.Web.CommandPattern
 
         public void ResetTime()
         {
-            currentDateTime = new DateTime(2020, 1, 1, 0, 0, 0);
+            currentDateTime = new DateTime(ECommerceConstants.DefaultYear, ECommerceConstants.DefaultMonth,
+                ECommerceConstants.DefaultDay, ECommerceConstants.DefaultHour, ECommerceConstants.DefaultMinute,
+                ECommerceConstants.DefaultSecond);
         }
 
         public DateTime GetCurrentDateTime()
