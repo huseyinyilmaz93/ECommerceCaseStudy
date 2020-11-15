@@ -1,5 +1,3 @@
-# ECommerceCaseStudy
-
 ## Scenario1.txt
   /scenario/scenario1
 
