@@ -21,18 +21,9 @@ using NUnit.Framework;
 
 namespace ECommerce.UnitTest
 {
-    public class BaseUnitTest
+    public class BaseTest
     {
-
         protected IServiceProvider _serviceProvider;
-
-        //private IOrderHolder _orderHolder;
-        //private IProductHolder _productHolder;
-        //private ICampaignHolder _campaignHolder;
-
-        //private IOrderCreator _orderCreator;
-        //private IProductCreator _productCreator;
-        //private ICampaignCreator _campaignCreator;
 
         protected Mock<IServiceProvider> _serviceProviderMock;
 
@@ -49,21 +40,7 @@ namespace ECommerce.UnitTest
 
         protected Mock<IStringifyHelper> _stringifyHelper;
         protected Mock<ICommandParameterHelper> _commandParameterHelper;
-
-        //Mock<ICreateCampaignParametersGetter> _createCampaignParametersGetterMock;
-        //Mock<ICreateOrderParametersGetter> _createOrderParametersGetterMock;
-        //Mock<ICreateProductParametersGetter> _createProductParametersGetterMock;
-        //Mock<IGetCampaignInfoParametersGetter> _getCampaignInfoParametersGetterMock;
-        //Mock<IGetProductInfoParametersGetter> _getProductInfoParametersGetterMock;
-        //Mock<IIncreaseTimeParametersGetter> _increaseTimeParametersGetterMock;
-
-        //Mock<ICreateCampaignCommandStringifier> _createCampaignCommandStringifierMock;
-        //Mock<ICreateOrderCommandStringifier> _createOrderCommandStringifierMock;
-        //Mock<ICreateProductCommandStringifier> _createProductCommandStringifierMock;
-        //Mock<IGetCampaignInfoCommandStringifier> _getCampaignInfoCommandStringifierMock;
-        //Mock<IGetProductInfoCommandStringifier> _getProductInfoCommandStringifierMock;
-        //Mock<IIncreaseTimeCommandStringifier> _increaseTimeCommandStringifierMock;
-
+        
         protected Mock<ICommandParameterValidator> _commandParameterValidator;
         protected Mock<IProductExistanceValidator> _productExistanceValidatorMock;
         protected Mock<IProductDoesNotExistValidator> _productDoesNotExistValidatorMock;
@@ -143,20 +120,6 @@ namespace ECommerce.UnitTest
             _productReaderMock = new Mock<IProductReader>();
             _campaignReader = new Mock<ICampaignReader>();
 
-            //_createCampaignParametersGetterMock = new Mock<ICreateCampaignParametersGetter>(MockBehavior.Loose);
-            //_createOrderParametersGetterMock = new Mock<ICreateOrderParametersGetter>(MockBehavior.Loose);
-            //_createProductParametersGetterMock = new Mock<ICreateProductParametersGetter>(MockBehavior.Loose);
-            //_getCampaignInfoParametersGetterMock = new Mock<IGetCampaignInfoParametersGetter>(MockBehavior.Loose);
-            //_getProductInfoParametersGetterMock = new Mock<IGetProductInfoParametersGetter>(MockBehavior.Loose);
-            //_increaseTimeParametersGetterMock = new Mock<IIncreaseTimeParametersGetter>(MockBehavior.Loose);
-
-            //_createCampaignCommandStringifierMock = new Mock<ICreateCampaignCommandStringifier>(MockBehavior.Loose);
-            //_createOrderCommandStringifierMock = new Mock<ICreateOrderCommandStringifier>(MockBehavior.Loose);
-            //_createProductCommandStringifierMock = new Mock<ICreateProductCommandStringifier>(MockBehavior.Loose);
-            //_getCampaignInfoCommandStringifierMock = new Mock<IGetCampaignInfoCommandStringifier>(MockBehavior.Loose);
-            //_getProductInfoCommandStringifierMock = new Mock<IGetProductInfoCommandStringifier>(MockBehavior.Loose);
-            //_increaseTimeCommandStringifierMock = new Mock<IIncreaseTimeCommandStringifier>(MockBehavior.Loose);
-
             _commandParameterValidator = new Mock<ICommandParameterValidator>(MockBehavior.Loose);
             _productExistanceValidatorMock = new Mock<IProductExistanceValidator>(MockBehavior.Loose);
             _productDoesNotExistValidatorMock = new Mock<IProductDoesNotExistValidator>(MockBehavior.Loose);
@@ -207,7 +170,7 @@ namespace ECommerce.UnitTest
         public IProductCreator GetProductCreator()
         {
             MockProductHolder();
-            return new ProductCreator(_productHolderMock.Object);
+            return new ProductCreator(_productHolderMock.Object, _productExistanceValidatorMock.Object);
         }
 
         public IStringifyHelper MockStringifyHelper()
