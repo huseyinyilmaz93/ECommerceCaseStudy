@@ -1,7 +1,13 @@
-﻿using ECommerce.Web.CommandPattern;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using ECommerce.Web.CommandPattern;
 using ECommerce.Web.CommandPattern.CommandPatternInterfaces;
+using ECommerce.Web.Constants;
 using ECommerce.Web.Exceptions;
 using ECommerce.Web.FactoryMethod;
+using ECommerce.Web.Helpers;
+using ECommerce.Web.Models;
 using Moq;
 using NUnit.Framework;
 
@@ -214,5 +220,55 @@ namespace ECommerce.UnitTest.UnitTest
 
             Assert.DoesNotThrow(() => increaseTimeCommand.Execute());
         }
+
+        [Test]
+        public void CommandBroker_DeleteAllRecors__deletes_all_order_product_campaign_records()
+        {
+            var commandBroker = new CommandBroker(_timerMock.Object, _orderHolderMock.Object, _productHolderMock.Object,
+                _campaignHolderMock.Object);
+
+            var product = CreateAProduct("P1", 100, 100);
+            CreateAnOrder(product, 10);
+            CreateACampaign(product, "C1", 10, 20, 100);
+
+            _campaignHolderMock.Setup(ch => ch.CampaignList).Returns(new List<Campaign>());
+            _orderHolderMock.Setup(ch => ch.OrderList).Returns(new List<Order>());
+            _productHolderMock.Setup(ch => ch.ProductList).Returns(new List<Product>());
+
+            commandBroker.DeleteAllRecords();
+
+            Assert.AreEqual(_campaignHolderMock.Object.CampaignList.Count, 0);
+            Assert.AreEqual(_orderHolderMock.Object.OrderList.Count, 0);
+            Assert.AreEqual(_productHolderMock.Object.ProductList.Count, 0);
+        }
+
+        [Test]
+        public void
+            CommandExecuter_Execute_commandTexts__stages_all_commands_one_by_one_executes_and_deletes_all_records()
+        {
+            var commandExecuter = new CommandExecuter(_commandCreatorMock.Object, _commandBrokerMock.Object);
+
+            _commandCreatorMock.Setup(cc => cc.GetCommand(It.IsAny<string>())).Returns(
+                new CreateCampaignCommand(_productReaderMock.Object, _campaignCreatorMock.Object,
+                    _stringifyHelper.Object, _commandParameterHelper.Object, _productDoesNotExistValidatorMock.Object));
+
+            _commandBrokerMock.Setup(cb => cb.ExecuteCommands()).Returns(new StringBuilder("OK"));
+
+            var expected = "OK";
+            var actual = commandExecuter.Execute(new string[] {""}).ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void FileReader_Read_accessor__reads_file_from_given_file_location()
+        {
+            var fileReader = new FileReader();
+            var actual = fileReader.Read(ECommerceConstants.Scenario1);
+            var expected = File.ReadAllLines(ECommerceConstants.Scenario1);
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

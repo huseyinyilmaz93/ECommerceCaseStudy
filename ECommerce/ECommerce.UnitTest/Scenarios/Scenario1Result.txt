@@ -1,0 +1,35 @@
+﻿Product created; code P11, price 100, stock 1000
+Campaign created; name C11, product P11, duration 10, limit 20, target sales count 100
+Order created; product P11, quantity 10
+Product P11 info; price 91.000, stock 990
+Time is 01:00
+Order created; product P11, quantity 15
+Product P11 info; price 91.5000, stock 975
+Time is 02:00
+Order created; product P11, quantity 20
+Product P11 info; price 92.5000, stock 955
+Time is 03:00
+Order created; product P11, quantity 25
+Product P11 info; price 94.000, stock 930
+Time is 04:00
+Order created; product P11, quantity 30
+Product P11 info; price 100, stock 900
+Time is 05:00
+Order created; product P11, quantity 30
+Product P11 info; price 100, stock 870
+Time is 06:00
+Order created; product P11, quantity 25
+Product P11 info; price 100, stock 845
+Time is 07:00
+Order created; product P11, quantity 20
+Product P11 info; price 100, stock 825
+Time is 08:00
+Order created; product P11, quantity 15
+Product P11 info; price 100, stock 810
+Time is 09:00
+Order created; product P11, quantity 10
+Product P11 info; price 100, stock 800
+Time is 10:00
+Product P11 info; price 100, stock 800
+Time is 11:00
+Campaign C11 info; Status Ended, Target Sales 100, Total Sales 100, Turnover 9137.5000, Average Item Price 91.3750

@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using ECommerce.Web.CommandPattern;
 using ECommerce.Web.CommandPattern.CommandPatternInterfaces;
+using ECommerce.Web.Controllers;
 using ECommerce.Web.DataHolder;
 using ECommerce.Web.DataHolder.DataHolderInterfaces;
 using ECommerce.Web.Events;
 using ECommerce.Web.Events.EventInterfaces;
 using ECommerce.Web.FactoryMethod;
 using ECommerce.Web.FactoryMethod.FactoryMethodInterfaces;
+using ECommerce.Web.Helpers;
+using ECommerce.Web.Helpers.HelperInterfaces;
 using ECommerce.Web.Models;
 using ECommerce.Web.Repositories;
 using ECommerce.Web.Repositories.RepositoryInterfaces;
@@ -58,6 +61,10 @@ namespace ECommerce.UnitTest
         protected Mock<ICommandBroker> _commandBrokerMock;
         protected Mock<ITimer> _timerMock;
 
+        protected Mock<IReader> _readerMock;
+        protected Mock<ICommandExecuter> _commandExecuterMock;
+
+
         [SetUp]
         public void Setup()
         {
@@ -102,6 +109,11 @@ namespace ECommerce.UnitTest
             services.AddSingleton<ICommandBroker, CommandBroker>();
             services.AddSingleton<ITimer, Timer>();
 
+            services.AddSingleton<IReader, FileReader>();
+            services.AddSingleton<ICommandExecuter, CommandExecuter>();
+
+            services.AddSingleton<ScenarioController>();
+
             _serviceProvider = services.BuildServiceProvider();
 
             _serviceProviderMock = new Mock<IServiceProvider>();
@@ -136,6 +148,9 @@ namespace ECommerce.UnitTest
             _commandCreatorMock = new Mock<ICommandCreator>(MockBehavior.Loose);
             _commandBrokerMock = new Mock<ICommandBroker>(MockBehavior.Loose);
             _timerMock = new Mock<ITimer>(MockBehavior.Loose);
+
+            _readerMock = new Mock<IReader>(MockBehavior.Loose);
+            _commandExecuterMock = new Mock<ICommandExecuter>(MockBehavior.Loose);
         }
 
         public void MockProductHolder()
