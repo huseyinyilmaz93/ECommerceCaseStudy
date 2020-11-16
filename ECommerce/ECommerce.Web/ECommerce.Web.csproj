@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>49208b52-d2f0-486a-978e-02985d7f91c5</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +11,32 @@
     <Content Remove="Helper\**" />
     <EmbeddedResource Remove="Helper\**" />
     <None Remove="Helper\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scenarios\Scenario1.txt" />
+    <None Remove="Scenarios\Scenario2.txt" />
+    <None Remove="Scenarios\Scenario4.txt" />
+    <None Remove="Scenarios\Scenario5.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scenarios\Scenario1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
   </ItemGroup>
 
 

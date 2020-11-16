@@ -7,6 +7,44 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Scenarios\Scenario1.txt" />
+    <None Remove="Scenarios\Scenario1Result.txt" />
+    <None Remove="Scenarios\Scenario2.txt" />
+    <None Remove="Scenarios\Scenario2Result.txt" />
+    <None Remove="Scenarios\Scenario4.txt" />
+    <None Remove="Scenarios\Scenario4Result.txt" />
+    <None Remove="Scenarios\Scenario5.txt" />
+    <None Remove="Scenarios\Scenario5Result.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scenarios\Scenario1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario1Result.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario2Result.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario4Result.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\Scenario5Result.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Moq" Version="4.15.1" />
     <PackageReference Include="nunit" Version="3.12.0" />
@@ -17,33 +55,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.Web\ECommerce.Web.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Scenarios\Scenario1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario1Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario2.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario2Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario4.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario4Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario5.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Scenarios\Scenario5Result.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
