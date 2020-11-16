@@ -4,7 +4,7 @@ Step 1: Run "docker pull hyilmaz93/ecommerce_ecommerce-web" command
 
 Step 2: Run "docker run -p 5001:5000 hyilmaz93/ecommerce_ecommerce-web" command (if 5001 port is not available on your local computer, please replace with available one)
 
-Step 3: Start web browser app and connect to "http://localhost:5001/scenario/scenario1"
+Step 3: Start web browser app and connect to "http://localhost:5001/index.html"
 
 ## Scenario1.txt
   Scenario1: /scenario/scenario1
