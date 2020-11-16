@@ -17,12 +17,20 @@ namespace ECommerce.Web.Controllers
             _commandExecuter = commandExecuter;
         }
 
+        /// <summary>
+        /// Executes commands in scenario1.txt
+        /// </summary>
+        /// <returns>Command execution result string</returns>
         [HttpGet]
         public string Scenario1()
         {
             return _commandExecuter.Execute(_reader.Read(ECommerceConstants.Scenario1));
         }
 
+        /// <summary>
+        /// Executes commands in scenario2.txt
+        /// </summary>
+        /// <returns>Command execution result string</returns>
         [HttpGet]
         public string Scenario2()
         {
@@ -30,6 +38,10 @@ namespace ECommerce.Web.Controllers
 
         }
 
+        /// <summary>
+        /// Executes commands in scenario4.txt
+        /// </summary>
+        /// <returns>Command execution result string</returns>
         [HttpGet]
         public string Scenario4()
         {
@@ -37,6 +49,10 @@ namespace ECommerce.Web.Controllers
 
         }
 
+        /// <summary>
+        /// Executes commands in scenario5.txt
+        /// </summary>
+        /// <returns>Command execution result string</returns>
         [HttpGet]
         public string Scenario5()
         {

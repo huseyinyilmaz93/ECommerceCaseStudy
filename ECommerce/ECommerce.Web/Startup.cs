@@ -1,5 +1,9 @@
+﻿using System;
+using System.IO;
+using System.Reflection;
 using ECommerce.Web.CommandPattern;
 using ECommerce.Web.CommandPattern.CommandPatternInterfaces;
+using ECommerce.Web.Constants;
 using ECommerce.Web.DataHolder;
 using ECommerce.Web.DataHolder.DataHolderInterfaces;
 using ECommerce.Web.Events;
@@ -19,6 +23,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace ECommerce.Web
 {
@@ -31,7 +36,6 @@ namespace ECommerce.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IProductHolder, ProductHolder>();
@@ -78,6 +82,28 @@ namespace ECommerce.Web
             services.AddSingleton<ICommandExecuter, CommandExecuter>();
 
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(ECommerceConstants.ApiVersion, new OpenApiInfo
+                {
+                    Title = ECommerceConstants.ScenarioAPI,
+                    Version = ECommerceConstants.ApiVersion,
+                    Contact = new OpenApiContact()
+                    {
+                        Name = ECommerceConstants.Author,
+                        Url = new Uri(ECommerceConstants.AuthorUrl),
+                    },
+
+                });
+                
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,6 +113,10 @@ namespace ECommerce.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Scenario API"); c.RoutePrefix = string.Empty; });
 
             app.UseHttpsRedirection();
 

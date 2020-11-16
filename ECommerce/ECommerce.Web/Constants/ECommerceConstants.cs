@@ -2,6 +2,7 @@
 {
     public class ECommerceConstants
     {
+        
         public const char CommandSplitCharacter = ' ';
 
         public const string Scenario1 = "Scenarios/Scenario1.txt";
@@ -37,6 +38,12 @@
         public const string CampaignInfoCommandString = "get_campaign_info";
         public const string ProductInfoCommandString = "get_product_info";
         public const string IncreaseTimeCommandString = "increase_time";
+
+        public const string ApiVersion = "v1";
+        public const string ScenarioAPI = "Scenario API";
+
+        public const string Author = "Hüseyin Yılmaz";
+        public const string AuthorUrl = "https://www.linkedin.com/in/huseyinyilmaz93/";
 
     }
 }
